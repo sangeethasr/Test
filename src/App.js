@@ -1,23 +1,22 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
-import Counter from "./components/Counter";
-import Form from "./components/Form";
+import React, {useState} from "react"
+import LoginForm from "./LoginForm";
+import EmployeeList from "./EmployeeList";
+import ErrorPage from "./ErrorPage";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
+const App = ()=>{
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  return(
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Form />}></Route>
-          <Route path="/counter" element={<Counter/>} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<LoginForm />}></Route>
+        <Route path="/dashboard" element={<EmployeeList />}></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
+    </Routes>
+    </BrowserRouter>
     </>
-  );
+  )
 }
 
 export default App;
